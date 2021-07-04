@@ -11,9 +11,9 @@ int main() {
         WSADATA wsaData;
         if(WSAStartup(MAKEWORD(2, 2), &wsaData)) {
 
-            printf(red);
+            printf("%s", red);
             printf("[Error]:");
-            printf(reset);
+            printf("%s", reset);
             printf("Failed to initialize\n");
             exit(1);
     }
@@ -35,9 +35,9 @@ int main() {
     pass_file = fopen(wlist_path, "r");
     if(pass_file == NULL) {
 
-        printf(red);
+        printf("%s", red);
         printf("|--Invalid Wordlist Path: %s\n", wlist_path);
-        printf(reset);
+        printf("%s", reset);
         return 1;
     }
     fclose(pass_file);
@@ -45,15 +45,15 @@ int main() {
     int count = get_file_lines(pass_file);
 
 
-    printf(cyan);
-    printf("[Info]:"); printf(reset);
+    printf("%s", cyan);
+    printf("[Info]:"); printf("%s", reset);
     printf(" FBLOOKUP Discovered %d Password(s)\n", count);
 
     time_t current_time;
     time(&current_time);
 
-    printf(cyan);
-    printf("[Info]:"); printf(reset);
+    printf("%s", cyan);
+    printf("[Info]:"); printf("%s", reset);
     printf(" Starting Fblookup At %s\n", ctime(&current_time));
 
     login(wlist_path, user);

