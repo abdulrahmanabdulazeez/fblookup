@@ -56,6 +56,6 @@ int main() {
     printf(" Starting Fblookup At %s\n", ctime(&current_time));
 
     login(wlist_path, user);
-   // fclose(pass_file);
+    fclose(pass_file);
     return 0;
 }
