@@ -40,7 +40,6 @@ int main() {
         printf("%s", reset);
         return 1;
     }
-    fclose(pass_file);
 
     int count = get_file_lines(pass_file);
 
@@ -57,6 +56,6 @@ int main() {
     printf(" Starting Fblookup At %s\n", ctime(&current_time));
 
     login(wlist_path, user);
-    
+   // fclose(pass_file);
     return 0;
 }

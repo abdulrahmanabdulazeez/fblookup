@@ -166,7 +166,7 @@ int get_file_lines(FILE *file) {
     char ch;
 
     ch = fgetc(file);
-    while(file != EOF) {
+    while(ch != EOF) {
         if(ch == '\n') {
             count = count + 1;
         }
