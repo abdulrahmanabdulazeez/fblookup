@@ -9,9 +9,9 @@ fblookup uses OpenSSL library to establish a SSL/TLS connection to facebook serv
 * It uses OpensSSL to establish a SSL/TLS connection to facebook server.
 * No root is required.
 # Screenshot
-![Test Image1](https://github.com/4anonz/fblookup/img/blob/main/fblookup.png)
-![Test Image2](https://github.com/4anonz/fblookup/img/blob/main/fblookup2.png)
-![Test Image3](https://github.com/4anonz/fblookup/img/blob/main/fblookup2.png)
+![Test Image1](https://raw.githubusercontent.com/4anonz/fblookup/main/img/fblookup.png)
+![Test Image2](https://raw.githubusercontent.com/4anonz/fblookup/main/img/fblookup2.png)
+![Test Image3](https://raw.githubusercontent.com/4anonz/fblookup/main/img/fblookup3.png)
 # Installation On Linux
 First install OpenSSL
 ```
