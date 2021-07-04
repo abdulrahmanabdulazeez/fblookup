@@ -160,20 +160,6 @@ char *encode_password(char *text) {
     return encoded;
 }
 
-int get_file_lines(FILE *file) {
-
-    int count = 0;
-    char ch;
-
-    ch = fgetc(file);
-    while(ch != EOF) {
-        if(ch == '\n') {
-            count = count + 1;
-        }
-        ch = fgetc(file);
-    }
-    return count;
-}
 /**
  * send_request_headers is used to sent HTTP headers to the facebook
  * server once connection is establish

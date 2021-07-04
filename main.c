@@ -41,13 +41,6 @@ int main() {
         return 1;
     }
 
-    int count = get_file_lines(pass_file);
-
-
-    printf("%s", cyan);
-    printf("[Info]:"); printf("%s", reset);
-    printf(" FBLOOKUP Discovered %d Password(s)\n", count);
-
     time_t current_time;
     time(&current_time);
 
