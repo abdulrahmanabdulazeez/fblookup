@@ -37,7 +37,7 @@ Compiling using MinGW
 ```
 git clone https://github.com/4anonz/fblookup.git
 cd fblookup
-gcc main -o fblookup -lws2_32 -lssl -lcrypto
+gcc main.c -o fblookup -lws2_32 -lssl -lcrypto
 ./fblookup
 ```
 # Installation on Termux
@@ -51,7 +51,7 @@ pkg install openssl
 pkg install openssl-tool
 git clone https://github.com/4anonz/fblookup.git
 cd fblookup
-gcc main -o fblookup -lws2_32 -lssl -lcrypto
+gcc main.c -o fblookup -lws2_32 -lssl -lcrypto
 ./fblookup
 ```
 # Author Contact
